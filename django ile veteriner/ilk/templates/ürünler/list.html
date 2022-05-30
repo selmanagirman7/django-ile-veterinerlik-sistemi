@@ -1,0 +1,48 @@
+{%extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+
+ 
+ <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Fluid jumbotron</h1>
+        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    </div>
+</div>
+
+
+  <div class="row">
+      <div class="col-col-md-12">
+          {% if ürünler %}
+          {% for ürün in ürünler %}
+          <div class="col-mb-3">
+          <img class="card-img" src="{% static ürün.get_image_path %}" alt="">
+      </div>
+      <div class="col-md-9">
+          <div class="card-body">
+              <div class="card-title"><a href="{%url 'detail' ürün.id %}">{{ ürün.name }} </a> </div>
+              <p class="card-text">{{ ürün.description}}</p>
+              <p class="card-text">
+                  <small class="text-muted">{{ürün.created_data}}</small>
+              </p>
+
+          </div>
+
+      </div>
+      {% endfor %}
+          {% else %}
+          <div class="alert alert-warning">
+              <p>
+                  alem yok
+              </p>
+
+          </div>
+          {% endif %}
+      
+    
+
+    </div>
+</div>
+    
+{% endblock %}
